@@ -1,0 +1,21 @@
+CROSS_HOST="x86_64-w64-mingw32"
+inherit cross
+
+NAME="mingw64-x86_64-iso-codes"
+VERSION=3.48
+RELEASE=1
+CATEGORY="Text"
+SUMMARY="ISO country, language and currency codes for Win64 toolchain"
+DESCRIPTION="This package aims to provide the list of the ISO country, language,
+and currency names and their translations in one place."
+HOMEPAGE="http://pkg-isocodes.alioth.debian.org/"
+#SRC_URI="http://pkg-isocodes.alioth.debian.org/downloads/iso-codes-${VERSION}.tar.bz2"
+SRC_URI="mirror://debian/pool/main/i/iso-codes/iso-codes_${VERSION}.orig.tar.xz"
+SRC_DIR="iso-codes-${VERSION}"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	cygconf
+	cygmake
+}
